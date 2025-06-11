@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import { NavLink } from 'react-router';
+import LoginByGoogle from '../../contexts/AuthContext/LoginByGoogle';
 
 const Login = () => {
 
@@ -28,11 +29,12 @@ const Login = () => {
             <div className="card-body">
                 <form onSubmit={handleLogin} className='space-y-4'>
                     <label className="label">Email</label>
-                    <input type="email" name='email'  className="input" required placeholder="Email" />
+                    <input type="email" name='email' className="input" required placeholder="Email" />
                     <label className="label">Password</label>
                     <input type="password" name='password' className="input" required placeholder="Password" />
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button type='submit' className="btn btn-neutral w-full mt-4">Login</button>
+                    <LoginByGoogle></LoginByGoogle>
                     <p>Don't have an account? <NavLink to={'/register'} className={'text-teal-400 underline font-semibold text-xl'}>Register</NavLink></p>
                 </form>
             </div>

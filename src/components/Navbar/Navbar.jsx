@@ -46,7 +46,7 @@ const Navbar = () => {
                     user?.email ?
                         <NavLink onClick={handleLogout} className='btn btn-sm btn-error'>LogOut</NavLink>
                         :
-                        <NavLink to={'/login'} className='btn btn-success'>Login</NavLink>
+                        <NavLink to={'/login'} className='btn btn-sm btn-success'>Login</NavLink>
                 }
             </div>
         </div>
