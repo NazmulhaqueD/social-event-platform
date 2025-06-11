@@ -1,23 +1,30 @@
-import React, { useContext } from 'react';
-import { Link, Links, NavLink } from 'react-router';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 
 const Navbar = () => {
 
+    const [isDark, setIsDark] = useState(false);
+    const [isDropdown, setIsDropdown] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogout = () => {
         logOut()
-        .then(()=>{
-            alert('logout successfully');
-        })
-        .catch(error=>{
-            console.log(error.message)
-        })
+            .then(() => {
+                alert('logout successfully');
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
+    // dark or light mode toggle implement here 
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', isDark ? 'dark' : 'light')
+    }, [isDark])
+
     const links = <>
-        <Link><li>home</li></Link>
+        <Link to={'/'}><li>home</li></Link>
         <Link><li>item</li></Link>
     </>
 
@@ -41,13 +48,33 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                {
-                    user?.email ?
-                        <NavLink onClick={handleLogout} className='btn btn-sm btn-error'>LogOut</NavLink>
-                        :
-                        <NavLink to={'/login'} className='btn btn-sm btn-success'>Login</NavLink>
-                }
+            <div className="navbar-end items-center gap-2">
+                <div>
+                    <input onClick={() => setIsDark(!isDark)} type="checkbox" defaultChecked className="toggle toggle-lg" />
+                </div>
+                <div>
+                    {
+                        user ?
+                            <span className='relative'>
+                                <img onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
+                                <div className={`flex flex-col bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute w-32 -right-18 
+                                    ${isDropdown ? 'top-14' : '-top-56'}`}>
+                                    <NavLink>Create Event</NavLink>
+                                    <NavLink>Joined Events</NavLink>
+                                    <NavLink>Manage Events</NavLink>
+                                </div>
+                            </span> :
+                            'hello'
+                    }
+                </div>
+                <div>
+                    {
+                        user?.email ?
+                            <NavLink onClick={handleLogout} className='btn btn-sm btn-error'>LogOut</NavLink>
+                            :
+                            <NavLink to={'/login'} className='btn btn-sm btn-success'>Login</NavLink>
+                    }
+                </div>
             </div>
         </div>
     );
