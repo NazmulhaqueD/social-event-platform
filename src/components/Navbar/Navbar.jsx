@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {  NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
@@ -11,7 +12,7 @@ const Navbar = () => {
     const handleLogout = () => {
         logOut()
             .then(() => {
-                alert('logout successfully');
+                toast('logout successfully');
             })
             .catch(error => {
                 console.log(error.message)
@@ -64,7 +65,7 @@ const Navbar = () => {
                                     <NavLink to='/manageEvents'>Manage Events</NavLink>
                                 </div>
                             </span> :
-                            'hello'
+                            ''
                     }
                 </div>
                 <div>

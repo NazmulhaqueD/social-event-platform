@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 import LoginByGoogle from '../../contexts/AuthContext/LoginByGoogle';
+import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
     const { setUser, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -16,6 +20,13 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 setUser(result.user);
+                Swal.fire({
+                    icon: "success",
+                    title: `Welcome ${result?.user?.displayName}`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate(`${location?.state ? location.state : '/'}`)
                 console.log(result.user)
             })
             .catch(error => {

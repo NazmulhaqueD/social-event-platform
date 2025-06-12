@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import LoginByGoogle from '../../contexts/AuthContext/LoginByGoogle';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
-    const { signUp } = useContext(AuthContext);
+    const { signUp, setUser } = useContext(AuthContext);
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -16,6 +17,13 @@ const Register = () => {
 
         signUp(email, password)
             .then(result => {
+                setUser(result.user);
+                Swal.fire({
+                    icon: "success",
+                    title: 'Your Registration is successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
                 console.log(result.user);
             })
             .catch(error => {

@@ -1,14 +1,25 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
+import { useLocation, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const LoginByGoogle = () => {
 
     const { signInWithGoogle, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSignInWithGoogle = () => {
         signInWithGoogle()
             .then(result => {
                 setUser(result.user);
+                Swal.fire({
+                    icon: "success",
+                    title: `Welcome ${result?.user.displayName}`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate(`${location?.state ? location.state : '/'}`)
                 console.log(result.user);
             })
             .catch(error => {
