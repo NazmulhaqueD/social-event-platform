@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import {  NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 
 const Navbar = () => {
@@ -24,8 +24,8 @@ const Navbar = () => {
     }, [isDark])
 
     const links = <>
-        <Link to={'/'}><li>home</li></Link>
-        <Link><li>item</li></Link>
+        <NavLink to='/'>home</NavLink>
+        <NavLink to='/item'>item</NavLink>
     </>
 
     return (
@@ -41,7 +41,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="text-xl font-bold">daisyUI</a>
+                <h2 className="text-xl font-bold">daisyUI</h2>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-x-4 font-semibold">
@@ -59,9 +59,9 @@ const Navbar = () => {
                                 <img onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
                                 <div className={`flex flex-col bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute w-32 -right-18 
                                     ${isDropdown ? 'top-14' : '-top-56'}`}>
-                                    <NavLink>Create Event</NavLink>
-                                    <NavLink>Joined Events</NavLink>
-                                    <NavLink>Manage Events</NavLink>
+                                    <NavLink to='/createEvent'>Create Event</NavLink>
+                                    <NavLink to='/joinedEvents'>Joined Events</NavLink>
+                                    <NavLink to='/manageEvents'>Manage Events</NavLink>
                                 </div>
                             </span> :
                             'hello'
