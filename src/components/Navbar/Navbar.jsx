@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {  NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import { toast } from 'react-toastify';
 
@@ -26,7 +26,7 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to='/'>home</NavLink>
-        <NavLink to='/item'>item</NavLink>
+        <NavLink to='/upcomingEvents'>Upcoming Events</NavLink>
     </>
 
     return (

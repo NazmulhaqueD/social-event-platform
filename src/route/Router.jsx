@@ -6,6 +6,9 @@ import Login from "../page/Login/Login";
 import ErrorPage from "../page/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import CreateEvent from "../page/CreateEvent/CreateEvent";
+import UpcomingEvents from "../page/UpcomingEvents";
+import Loader from "../components/Loader";
+import EventDetails from "../page/EventDetails";
 
 export const router = createBrowserRouter([
     {
@@ -17,12 +20,18 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/createEvent',
-                element: <PrivateRoute><CreateEvent></CreateEvent></PrivateRoute>
+                path: '/upcomingEvents',
+                loader: () => fetch('http://localhost:5000/events'),
+                hydrateFallbackElement: <Loader></Loader>,
+                element: <UpcomingEvents></UpcomingEvents>
             },
             {
-                path: '/item',
-                element: <PrivateRoute><p>item page</p></PrivateRoute>
+                path:'/eventDetails/:id',
+                element: <PrivateRoute><EventDetails></EventDetails></PrivateRoute>
+            },
+            {
+                path: '/createEvent',
+                element: <PrivateRoute><CreateEvent></CreateEvent></PrivateRoute>
             },
             {
                 path: '/register',
