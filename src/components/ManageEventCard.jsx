@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const ManageEventCardMobile = ({ event }) => {
+
     return (
         <div>
             <div className="">
@@ -11,7 +13,7 @@ const ManageEventCardMobile = ({ event }) => {
                     <p>Location: {event.location}</p>
                     <p>Type: {event.eventType}</p>
                     <div className="mt-2 justify-between grid grid-cols-2 gap-4">
-                        <button className=" py-2 rounded-xl btn btn-primary">Edit</button>
+                        <NavLink to={`/eventUpdate/${event._id}`} className=" py-2 rounded-xl btn btn-primary">Edit</NavLink>
                         <button className=" py-2 rounded-xl btn btn-error">Delete</button>
                     </div>
                 </div>

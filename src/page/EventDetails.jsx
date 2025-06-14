@@ -10,7 +10,7 @@ const EventDetails = () => {
     const [event, setEvent] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/eventDetails/${id}`)
+        axios.get(`http://localhost:5000/events/${id}`)
             .then(result => {
                 setEvent(result.data)
             })
