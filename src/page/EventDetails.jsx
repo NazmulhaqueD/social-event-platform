@@ -1,12 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 
 const EventDetails = () => {
 
+    const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [event, setEvent] = useState(null)
-    console.log(event)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/eventDetails/${id}`)
@@ -15,8 +16,24 @@ const EventDetails = () => {
             })
     }, [id])
 
+    const handleJoinEvent = () => {
+        const { _id, ...joinedEvents} = event;
+        // const joinedEvents = event;
+        joinedEvents.join_id = event._id;
+        joinedEvents.participant = user.email;
+        console.log(joinedEvents);
+
+        axios.post('http://localhost:5000/joinedEvents', joinedEvents)
+            .then(result => {
+                console.log(result.data);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     return (
-        <div className="card bg-base-300 max-w-md mx-auto flex flex-col gap-4 h-full p-2 shadow-lg">
+        <div className="card bg-base-300 my-8 max-w-md mx-auto flex flex-col gap-4 h-full p-2 shadow-lg">
             <figure>
                 <img
                     className='w-full h-[300px] rounded-xl'
@@ -31,7 +48,7 @@ const EventDetails = () => {
                 <p className='py-2 italic font-thin'>{event?.Descriptions}</p>
             </div>
             <div className="card-actions justify-center mt-auto">
-                <button className="btn btn-primary w-full mt-4">View Event</button>
+                <button onClick={handleJoinEvent} className="btn btn-primary w-full mt-4">Join Event</button>
             </div>
         </div>
     );

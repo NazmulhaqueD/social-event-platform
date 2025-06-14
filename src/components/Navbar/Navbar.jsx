@@ -60,9 +60,9 @@ const Navbar = () => {
                                 <img onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
                                 <div className={`flex flex-col bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute w-32 -right-18 
                                     ${isDropdown ? 'top-14' : '-top-56'}`}>
-                                    <NavLink to='/createEvent'>Create Event</NavLink>
-                                    <NavLink to='/joinedEvents'>Joined Events</NavLink>
-                                    <NavLink to='/manageEvents'>Manage Events</NavLink>
+                                    <NavLink onClick={() => setIsDropdown(false)} to='/createEvent'>Create Event</NavLink>
+                                    <NavLink onClick={() => setIsDropdown(false)} to='/joinedEvents'>Joined Events</NavLink>
+                                    <NavLink onClick={() => setIsDropdown(false)} to='/manageEvents'>Manage Events</NavLink>
                                 </div>
                             </span> :
                             ''

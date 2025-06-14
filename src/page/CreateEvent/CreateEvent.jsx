@@ -52,7 +52,8 @@ const CreateEvent = () => {
                             selected={eventDate}
                             onChange={(date) => setEventDate(date)}
                             minDate={new Date()}
-                            withPortal 
+                            placeholderText='select a date'
+                            withPortal
                             className="input w-full"
                         ></DatePicker>
                     </fieldset>
