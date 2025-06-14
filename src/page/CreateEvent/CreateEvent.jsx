@@ -55,6 +55,7 @@ const CreateEvent = () => {
                             placeholderText='select a date'
                             withPortal
                             className="input w-full"
+                            required
                         ></DatePicker>
                     </fieldset>
                     <fieldset className="fieldset">
