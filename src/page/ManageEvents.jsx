@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import axios from 'axios';
-import ManageEventCardMobile from '../components/ManageEventCard';
+// import ManageEventCardMobile from '../components/ManageEventCard';
+import ManageEventCard from '../components/ManageEventCard';
 
 const ManageEvents = () => {
 
@@ -21,10 +22,12 @@ const ManageEvents = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
-                    myCreateEvents?.map(event => <ManageEventCardMobile
+                    myCreateEvents?.map(event => <ManageEventCard
                         key={event._id}
                         event={event}
-                    ></ManageEventCardMobile>)
+                        setMyCreateEvents={setMyCreateEvents}
+                        myCreateEvents={myCreateEvents}
+                    ></ManageEventCard>)
                 }
             </div>
         </div>

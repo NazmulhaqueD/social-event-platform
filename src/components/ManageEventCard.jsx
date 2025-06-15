@@ -1,7 +1,42 @@
+import axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router';
+import Swal from 'sweetalert2';
 
-const ManageEventCardMobile = ({ event }) => {
+const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
+
+    const handleDeleteEvent = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.delete(`http://localhost:5000/eventDelete/${event._id}`)
+                    .then(result => {
+                        if (result.data.acknowledged) {
+                            const remainingEvent = myCreateEvents.filter(singleEvent => singleEvent._id !== event._id);
+                            setMyCreateEvents(remainingEvent);
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                        console.log(result.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+
+            }
+        });
+    }
 
     return (
         <div>
@@ -14,7 +49,7 @@ const ManageEventCardMobile = ({ event }) => {
                     <p>Type: {event.eventType}</p>
                     <div className="mt-2 justify-between grid grid-cols-2 gap-4">
                         <NavLink to={`/eventUpdate/${event._id}`} className=" py-2 rounded-xl btn btn-primary">Edit</NavLink>
-                        <button className=" py-2 rounded-xl btn btn-error">Delete</button>
+                        <button onClick={handleDeleteEvent} className=" py-2 rounded-xl btn btn-error">Delete</button>
                     </div>
                 </div>
             </div>
@@ -22,4 +57,4 @@ const ManageEventCardMobile = ({ event }) => {
     );
 };
 
-export default ManageEventCardMobile;
+export default ManageEventCard;

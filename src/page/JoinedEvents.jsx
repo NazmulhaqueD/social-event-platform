@@ -20,7 +20,8 @@ const JoinedEvents = () => {
     }, [user])
 
     return (
-        <div>
+        <div className='py-6 md:py-8 bg-base-300 rounded-2xl px-4'>
+            <h1 className='text-2xl md:text-4xl text-center text-teal-400 py-8 font-bold'>Your Event Participation</h1>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     myJoinedEvents?.map(event => <JoinedEventCard

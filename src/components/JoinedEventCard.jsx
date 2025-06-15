@@ -37,7 +37,7 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
     }
 
     return (
-        <div className="card bg-base-300 w-full flex flex-col gap-4 h-full min-h-[450px] p-2 shadow-lg">
+        <div className="card bg-base-100 w-full flex flex-col gap-4 h-full min-h-[450px] p-4 shadow-lg">
             <figure>
                 <img
                     className='w-full h-[300px] rounded-xl'
