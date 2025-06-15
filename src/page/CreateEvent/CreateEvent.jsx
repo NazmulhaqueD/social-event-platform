@@ -18,6 +18,7 @@ const CreateEvent = () => {
         const formData = new FormData(form);
         const eventsInfo = Object.fromEntries(formData.entries());
         eventsInfo.eventDate = eventDate;
+        eventsInfo.postDate = new Date();
 
         // Event data save in the mongodb database 
         axios.post('http://localhost:5000/events', eventsInfo)

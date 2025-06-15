@@ -44,7 +44,7 @@ const Feature = () => {
                     initial={{y:50, opacity:0}}
                     animate={{y:0, opacity: 1}}
                     transition={{duration: 5, ease: 'easeInOut'}}
-                    className='shadow-lg p-6 bg-base-200 rounded-xl'
+                    className='shadow-lg p-6 bg-base-200 rounded-xl hover:scale-105 transition duration-300'
                     key={feature.id}>
                         <div className='bg-base-100 rounded-xl p-6'>
                             <img className='w-32 h-32 mx-auto' src={feature.icon} alt="" />

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
@@ -11,18 +11,18 @@ const UpdateEvent = () => {
 
     const event = useLoaderData();
     const { user } = useContext(AuthContext);
-    // const [eventDate, setEventDate] = useState(event?.eventDate);
+    const [eventDate, setEventDate] = useState(new Date(event?.eventDate));
     const { title, location, eventType, Descriptions, photoURL } = event;
     const navigate = useNavigate()
 
-    console.log(event);
 
     const handleUpdateEvent = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form)
         const updateEventData = Object.fromEntries(formData.entries());
-        console.log(updateEventData)
+        updateEventData.eventDate = eventDate;
+        updateEventData.postDate = new Date();
 
         Swal.fire({
             title: "Are you sure?",
@@ -82,8 +82,8 @@ const UpdateEvent = () => {
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Date</legend>
                         <DatePicker
-                            selected={event?.eventDate}
-                            // onChange={(date) => setEventDate(date)}
+                            selected={eventDate}
+                            onChange={(date) => setEventDate(date)}
                             minDate={new Date()}
                             placeholderText='select a date'
                             withPortal

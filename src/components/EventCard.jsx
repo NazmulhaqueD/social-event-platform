@@ -1,25 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import { motion } from "motion/react"
 
-const EventCard = ({event}) => {
+
+const EventCard = ({ event }) => {
     return (
-        <div className="card bg-base-300 w-full flex flex-col gap-4 h-full min-h-[450px] p-2 shadow-lg">
+        <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 3, ease: 'easeInOut' }}
+            className="card bg-base-300 w-full flex flex-col h-full min-h-[450px] p-4 shadow-lg hover:scale-105 transition-all ease-in-out duration-300">
             <figure>
                 <img
                     className='w-full h-[300px] rounded-xl'
                     src={event?.photoURL}
                     alt="Shoes" />
             </figure>
-            <div className="flex flex-col gap-3 flex-grow">
-                <h2 className="card-title font-semibold text-xl">{event.title}</h2>
-                <span><p className='text-xl italic font-thin'>{event.location}</p></span>
-                <h2>{new Date(event.eventDate).toDateString()}</h2>
-                <p>{event.eventType}</p>
+            <div className='bg-base-200 rounded-2xl p-4'>
+                <div className="flex flex-col gap-3 flex-grow">
+                    <h2 className="card-title font-bold text-2xl">{event.title}</h2>
+                    <span><p className='text-xl italic font-semibold'>{event.location}</p></span>
+                    <p className='text-sm'>creator: {event.creator}</p>
+                    <h2>{new Date(event.eventDate).toDateString()}</h2>
+                    <p>{event.eventType}</p>
+                </div>
+                <div className="card-actions justify-center mt-auto">
+                    <NavLink to={`/eventDetails/${event._id}`} className="btn btn-primary w-full mt-4">View Event</NavLink>
+                </div>
             </div>
-            <div className="card-actions justify-center mt-auto">
-                <NavLink to={`/eventDetails/${event._id}`} className="btn btn-primary w-full mt-4">View Event</NavLink>
-            </div>
-        </div>
+        </motion.div>
     );
 };
 
