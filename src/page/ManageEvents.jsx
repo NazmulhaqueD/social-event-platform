@@ -3,6 +3,7 @@ import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import axios from 'axios';
 // import ManageEventCardMobile from '../components/ManageEventCard';
 import ManageEventCard from '../components/ManageEventCard';
+import { NavLink } from 'react-router';
 
 const ManageEvents = () => {
 
@@ -17,7 +18,7 @@ const ManageEvents = () => {
     }, [user.email])
 
     return (
-        <div className='bg-base-200 my-8 rounded-2xl p-4 min-h-[65vh]'>
+        <div className='bg-base-200 my-8 rounded-2xl p-4 sm:min-h-[65vh]'>
             <h1 className='text-teal-400 font-bold text-2xl md:text-4xl text-center py-6'>Manage Your Events</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -30,6 +31,16 @@ const ManageEvents = () => {
                     ></ManageEventCard>)
                 }
             </div>
+            {
+                !myCreateEvents?.length && <div>
+                    <div className='max-w-md mx-auto flex justify-center flex-col mt-16
+             border-2 border-teal-500 p-8 rounded-xl'>
+                        <h1 className='text-6xl text-center text-error font-bold'>Opps!!!</h1>
+                        <p className='text-xl text-center py-6'>You haven't created any event yet</p>
+                        <NavLink to={'/createEvent'} className='btn btn-success mx-auto'>Create Event</NavLink>
+                    </div>
+                </div>
+            }
         </div>
     );
 };
