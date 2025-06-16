@@ -6,9 +6,9 @@ import { motion } from "motion/react"
 const EventCard = ({ event }) => {
     return (
         <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 3, ease: 'easeInOut' }}
+            transition={{ duration: 2, ease: 'easeInOut' }}
             className="card bg-base-300 w-full flex flex-col h-full min-h-[450px] p-4 shadow-lg hover:scale-105 transition-all ease-in-out duration-300">
             <figure>
                 <img
@@ -24,9 +24,9 @@ const EventCard = ({ event }) => {
                     <h2>{new Date(event.eventDate).toDateString()}</h2>
                     <p>{event.eventType}</p>
                 </div>
-                <div className="card-actions justify-center mt-auto">
-                    <NavLink to={`/eventDetails/${event._id}`} className="btn btn-primary w-full mt-4">View Event</NavLink>
-                </div>
+            </div>
+            <div className="card-actions justify-center mt-auto">
+                <NavLink to={`/eventDetails/${event._id}`} className="btn btn-primary w-full mt-4">View Event</NavLink>
             </div>
         </motion.div>
     );

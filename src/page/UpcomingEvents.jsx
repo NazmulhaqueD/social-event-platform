@@ -29,8 +29,8 @@ const UpcomingEvents = () => {
     }
 
     return (
-        <div className='bg-base-200 md:p-4 rounded-2xl'>
-            <h1 className='text-2xl md:text-4xl p-4 md:py-8 text-center text-teal-400 font-bold'>Upcoming Events</h1>
+        <div className='bg-base-200 md:p-4 rounded-2xl my-6'>
+            <h1 className='text-2xl md:text-4xl p-4 md:pb-6 text-center text-teal-400 font-bold'>Upcoming Events</h1>
             <div className='max-w-3xl grid grid-cols-1 md:grid-cols-2 mx-auto gap-3 mb-4'>
                 <fieldset className="flex gap-6 w-full">
                     <select onChange={handleFilterEvent} defaultValue="" name='eventType' className="select w-full">

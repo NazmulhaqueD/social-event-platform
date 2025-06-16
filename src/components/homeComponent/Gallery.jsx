@@ -13,7 +13,7 @@ const Gallery = () => {
     return (
         <div className='bg-base-200 rounded-2xl'>
             <h1 className='text-2xl md:text-4xl p-4 md:py-8 text-center text-teal-400 font-bold'>Latest Events Gallery</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 md:p-6 gap-6'>
                 {
                     latestEvents?.map(latestEvent => <div
                         className='shadow-lg shadow-black rounded-xl overflow-hidden group p-4 relative hover:scale-105 transition ease-in-out duration-300'

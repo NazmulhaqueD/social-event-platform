@@ -3,31 +3,45 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import LoginByGoogle from '../../contexts/AuthContext/LoginByGoogle';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
-    const { signUp, setUser } = useContext(AuthContext);
+    const { signUp, setUser, profileUpdate } = useContext(AuthContext);
 
     const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const registerData = Object.fromEntries(formData.entries());
-        const { email, password } = registerData;
+        const { email, password, name, photo } = registerData;
+
+        // password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            toast.error("Password must be at least 6 characters long and include uppercase, lowercase letter.");
+            return;
+        }
 
         signUp(email, password)
             .then(result => {
                 setUser(result.user);
-                Swal.fire({
-                    icon: "success",
-                    title: 'Your Registration is successfully',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                console.log(result.user);
+                profileUpdate(name, photo)
+                    .then(() => {
+                        Swal.fire({
+                            icon: "success",
+                            title: 'Your Registration is successfully',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    })
+                    .catch(error => {
+                        toast.error(`${error.message}`)
+                    })
+
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(error.message)
             })
     }
 
@@ -38,14 +52,14 @@ const Register = () => {
             <div className="card-body">
                 <form onSubmit={handleSignUp} className='space-y-4'>
                     <label className="label">Name</label>
-                    <input type="text" name='name' className="input" placeholder="Your Name" />
+                    <input required type="text" name='name' className="input" placeholder="Your Name" />
 
                     <label className="label">Photo</label>
-                    <input type="text" name='photo' className="input" placeholder="Photo Url" />
+                    <input required type="text" name='photo' className="input" placeholder="Photo Url" />
                     <label className="label">Email</label>
-                    <input type="email" name='email' className="input" placeholder="Email" />
+                    <input required type="email" name='email' className="input" placeholder="Email" />
                     <label className="label">Password</label>
-                    <input type="password" name='password' className="input" placeholder="Password" />
+                    <input required type="password" name='password' className="input" placeholder="Password" />
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button type='submit' className="btn btn-neutral w-full mt-4">Register</button>
                     <LoginByGoogle></LoginByGoogle>

@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
+import { toast } from 'react-toastify';
 
 const EventDetails = () => {
 
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [event, setEvent] = useState(null)
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://localhost:5000/events/${id}`)
@@ -17,7 +19,7 @@ const EventDetails = () => {
     }, [id])
 
     const handleJoinEvent = () => {
-        const { _id, ...joinedEvents} = event;
+        const { _id, ...joinedEvents } = event;
         // const joinedEvents = event;
         joinedEvents.join_id = event._id;
         joinedEvents.participant = user.email;
@@ -25,6 +27,10 @@ const EventDetails = () => {
 
         axios.post('http://localhost:5000/joinedEvents', joinedEvents)
             .then(result => {
+                if (result?.data.insertedId) {
+                    toast.success('You are participate this event successfully')
+                    navigate('/joinedEvents')
+                }
                 console.log(result.data);
             })
             .catch(error => {
