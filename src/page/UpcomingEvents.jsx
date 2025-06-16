@@ -11,7 +11,7 @@ const UpcomingEvents = () => {
 
     const handleFilterEvent = (e) => {
         const selectedValue = e.target.value;
-        axios.get(`http://localhost:5000/events?type=${selectedValue}`)
+        axios.get(`https://social-serve-server.vercel.app/events?type=${selectedValue}`)
             .then(result => {
                 setEvents(result.data);
             })
@@ -21,7 +21,7 @@ const UpcomingEvents = () => {
     const handleSearchByTitle = (e) => {
         e.preventDefault();
         const searchTitle = e.target.title.value;
-        axios.get(`http://localhost:5000/events?search=${searchTitle}`)
+        axios.get(`https://social-serve-server.vercel.app/events?search=${searchTitle}`)
             .then(result => {
                 setEvents(result.data);
             })

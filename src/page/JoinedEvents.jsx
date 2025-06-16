@@ -10,7 +10,7 @@ const JoinedEvents = () => {
     const [myJoinedEvents, setMyJoinedEvents] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/joinedEvents/${user?.email}`)
+        axios.get(`https://social-serve-server.vercel.app/joinedEvents/${user?.email}`)
             .then(result => {
                 setMyJoinedEvents(result.data);
             })

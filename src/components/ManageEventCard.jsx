@@ -17,7 +17,7 @@ const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/eventDelete/${event._id}`)
+                axios.delete(`https://social-serve-server.vercel.app/eventDelete/${event._id}`)
                     .then(result => {
                         if (result.data.acknowledged) {
                             const remainingEvent = myCreateEvents.filter(singleEvent => singleEvent._id !== event._id);
@@ -43,10 +43,12 @@ const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
             <div className="">
                 <div className="bg-base-300 rounded p-4 space-y-3 inset-shadow-sm inset-shadow-indigo-500/50">
                     <img src={event.photoURL} className="w-full h-40 md:h-56 object-cover rounded-lg" />
-                    <h2 className="text-xl font-semibold mt-2">{event.title}</h2>
-                    <p>Date: {new Date(event.eventDate).toLocaleDateString()}</p>
-                    <p>Location: {event.location}</p>
-                    <p>Type: {event.eventType}</p>
+                    <div>
+                        <h2 className="text-xl font-semibold mt-2">{event.title}</h2>
+                        <p>Date: {new Date(event.eventDate).toLocaleDateString()}</p>
+                        <p>Location: {event.location}</p>
+                        <p>Type: {event.eventType}</p>
+                    </div>
                     <div className="mt-2 justify-between grid grid-cols-2 gap-4">
                         <NavLink to={`/eventUpdate/${event._id}`} className=" py-2 rounded-xl btn btn-primary">Edit</NavLink>
                         <button onClick={handleDeleteEvent} className=" py-2 rounded-xl btn btn-error">Delete</button>

@@ -12,13 +12,13 @@ const ManageEvents = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/events?email=${user?.email}`)
+        axios.get(`https://social-serve-server.vercel.app/events?email=${user?.email}`)
             .then(result => setMyCreateEvents(result.data));
     }, [user.email])
 
     return (
-        <div className=''>
-            <h1 className='text-teal-400 font-bold text-2xl md:text-4xl text-center my-8'>Manage Your Events</h1>
+        <div className='bg-base-200 my-8 rounded-2xl p-4 min-h-[65vh]'>
+            <h1 className='text-teal-400 font-bold text-2xl md:text-4xl text-center py-6'>Manage Your Events</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {

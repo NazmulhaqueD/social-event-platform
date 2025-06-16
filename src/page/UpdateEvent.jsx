@@ -35,7 +35,7 @@ const UpdateEvent = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.put(`http://localhost:5000/eventUpdate/${event._id}`, updateEventData)
+                axios.put(`https://social-serve-server.vercel.app/eventUpdate/${event._id}`, updateEventData)
                     .then(result => {
                         if (result?.data.modifiedCount) {
                             Swal.fire({

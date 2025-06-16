@@ -12,7 +12,7 @@ const EventDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/events/${id}`)
+        axios.get(`https://social-serve-server.vercel.app/events/${id}`)
             .then(result => {
                 setEvent(result.data)
             })
@@ -25,7 +25,7 @@ const EventDetails = () => {
         joinedEvents.participant = user.email;
         console.log(joinedEvents);
 
-        axios.post('http://localhost:5000/joinedEvents', joinedEvents)
+        axios.post('https://social-serve-server.vercel.app/joinedEvents', joinedEvents)
             .then(result => {
                 if (result?.data.insertedId) {
                     toast.success('You are participate this event successfully')

@@ -21,7 +21,7 @@ const CreateEvent = () => {
         eventsInfo.postDate = new Date();
 
         // Event data save in the mongodb database 
-        axios.post('http://localhost:5000/events', eventsInfo)
+        axios.post('https://social-serve-server.vercel.app/events', eventsInfo)
             .then(result => {
                 if (result?.data.insertedId) {
                     Swal.fire({

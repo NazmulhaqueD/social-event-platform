@@ -6,7 +6,7 @@ const Gallery = () => {
     const [latestEvents, setLatestEvents] = useState(null)
 
     useEffect(() => {
-        fetch('http://localhost:5000/latestEvents')
+        fetch('https://social-serve-server.vercel.app/latestEvents')
             .then(res => res.json())
             .then(data => setLatestEvents(data))
     }, [])
