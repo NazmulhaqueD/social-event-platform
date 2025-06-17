@@ -3,6 +3,22 @@
 
 .activeLink a.active{
     color: rgb(25, 168, 168);
-    scale: 1.1;
     border-bottom: 2px solid green;
+}
+
+.linkByImage{
+    width: 150px;
+    background-color: white;
+    z-index: 5;
+    padding: 20px;
+}
+
+.linkByImage a:hover{
+    color: teal;
+}
+.mobileLinks{
+    padding: 10px;
+}
+.mobileLinks a{
+    margin: 5px 10px;
 }

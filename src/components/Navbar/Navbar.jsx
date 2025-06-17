@@ -40,7 +40,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow activeLink">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 mobileLinks shadow activeLink">
                         {links}
                     </ul>
                 </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
                                 <div className="tooltip tooltip-bottom w-full flex flex-col items-center" data-tip={`${user?.displayName}`}>
                                     <img onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
                                 </div>
-                                <div className={`flex flex-col z-20 bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute activeLink w-32 -right-18 
+                                <div className={`flex flex-col z-20 bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute activeLink linkByImage w-32 -right-18 
                                     ${isDropdown ? 'top-14' : '-top-56'}`}>
                                     <NavLink onClick={() => setIsDropdown(false)} to='/createEvent'>Create Event</NavLink>
                                     <NavLink onClick={() => setIsDropdown(false)} to='/joinedEvents'>Joined Events</NavLink>
