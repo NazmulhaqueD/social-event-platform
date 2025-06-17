@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { motion } from "motion/react"
+import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 
 const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
 
-
+    const { user, setLoading } = useContext(AuthContext);
     const handleCancelEvent = () => {
-
+        setLoading(true)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -18,20 +19,24 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://social-serve-server.vercel.app/cancelEvent/${event._id}`, { method: 'DELETE' })
+                fetch(`https://social-serve-server.vercel.app/cancelEvent/${event._id}`, {
+                    method: 'DELETE',
+                    headers: { Authorization: `Bearer ${user?.accessToken}` }
+                })
                     .then(res => res.json())
                     .then(data => {
                         if (data?.deletedCount) {
                             const remainedEvent = myJoinedEvents.filter(singleEvent => singleEvent._id !== event._id);
                             setMyJoinedEvents(remainedEvent)
+                            setLoading(false);
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Your event has been deleted successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
                         }
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Your event has been deleted successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
                     })
             }
         });
@@ -39,9 +44,9 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
 
     return (
         <motion.div
-            initial={{y:10, opacity:0.5}}
-            animate={{y: 0, opacity: 1}}
-            transition={{duration: 2}}
+            initial={{ y: 10, opacity: 0.5 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 2 }}
             className="card bg-base-100 w-full flex flex-col gap-4 h-full min-h-[450px] p-4 shadow-lg hover:shadow-2xl transition duration-300">
             <figure>
                 <img

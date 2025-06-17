@@ -12,11 +12,14 @@ const EventDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://social-serve-server.vercel.app/events/${id}`)
+        axios.get(`https://social-serve-server.vercel.app/events/${id}`, {
+
+            headers: { Authorization: `Bearer ${user?.accessToken}` }
+        })
             .then(result => {
                 setEvent(result.data)
             })
-    }, [id])
+    }, [id, user])
 
     const handleJoinEvent = () => {
         const { _id, ...joinedEvents } = event;
@@ -25,7 +28,10 @@ const EventDetails = () => {
         joinedEvents.participant = user.email;
         console.log(joinedEvents);
 
-        axios.post('https://social-serve-server.vercel.app/joinedEvents', joinedEvents)
+        axios.post('https://social-serve-server.vercel.app/joinedEvents', joinedEvents, {
+
+            headers: { Authorization: `Bearer ${user?.accessToken}` }
+        })
             .then(result => {
                 if (result?.data.insertedId) {
                     toast.success('You are participate this event successfully')

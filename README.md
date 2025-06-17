@@ -1,12 +1,87 @@
-# React + Vite
+# 🌱 Social Serve - A Social Development Events Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Link:** [https://social-serve-auth.web.app/](https://social-serve-auth.web.app/)
 
-Currently, two official plugins are available:
+Social Serve is a community-driven event management platform where users can create, join, and track social service events in their local area. Whether it's a road cleaning mission or a tree plantation drive — this app brings people together for social good.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Project Purpose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To promote social development by making it easier for users to participate in local events such as:
+
+- "Road Cleaning in Mirpur 10, Dhaka”
+- "Tree Plantation - Hossainpur, Kishoreganj"
+
+Users can:
+- Create new events
+- Join existing events
+- Manage their own events
+- Track joined events
+
+---
+
+## 🔑 Key Features
+
+- ✅ Email/Password Authentication
+- ✅ Google Social Login
+- ✅ Protected Routes using JWT
+- ✅ Event Creation with Validation & Date Restriction
+- ✅ Join Events & Track Participation
+- ✅ Update Own Events
+- ✅ Theme Toggle (Dark/Light)
+- ✅ Mobile, Tablet & Desktop Responsive
+- ✅ Error Handling with Toast/SweetAlert
+- ✅ Filter Events by Type & Search by Title
+- ✅ Fully Dynamic Routing
+- ✅ Eye-soothing UI for recruiters
+- ✅ Optional Features:
+  - Spinner during data loading
+  - Framer Motion Animations
+  - TanStack Mutation Implementation
+  - Pagination on Upcoming Events Page
+
+---
+
+## 🧪 Tech Stack
+
+### Frontend:
+- React + Vite
+- Tailwind CSS
+- React Router DOM
+- React Toastify
+- React Datepicker
+- React Simple Typewriter
+- Framer Motion
+- SweetAlert2
+- React Tooltip
+
+### Backend:
+- Express.js
+- MongoDB
+- CORS
+- JWT
+- Dotenv
+
+---
+
+## 📦 Dependencies Used
+
+```json
+"dependencies": {
+  "@tailwindcss/vite": "^4.1.8",
+  "axios": "^1.9.0",
+  "date-fns": "^4.1.0",
+  "firebase": "^11.9.1",
+  "motion": "^12.18.1",
+  "react": "^19.1.0",
+  "react-datepicker": "^8.4.0",
+  "react-dom": "^19.1.0",
+  "react-icons": "^5.5.0",
+  "react-router": "^7.6.2",
+  "react-simple-typewriter": "^5.0.1",
+  "react-toastify": "^11.0.5",
+  "react-tooltip": "^5.29.1",
+  "sweetalert2": "^11.22.0",
+  "tailwindcss": "^4.1.8"
+}

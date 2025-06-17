@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 
 const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
 
+    const { user, setLoading } = useContext(AuthContext);
     const handleDeleteEvent = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -16,11 +18,15 @@ const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                setLoading(true)
+                axios.delete(`https://social-serve-server.vercel.app/eventDelete/${event._id}`, {
 
-                axios.delete(`https://social-serve-server.vercel.app/eventDelete/${event._id}`)
+                    headers: { Authorization: `Bearer ${user?.accessToken}` }
+                })
                     .then(result => {
                         if (result.data.acknowledged) {
                             const remainingEvent = myCreateEvents.filter(singleEvent => singleEvent._id !== event._id);
+                            setLoading(false)
                             setMyCreateEvents(remainingEvent);
                             Swal.fire({
                                 title: "Deleted!",

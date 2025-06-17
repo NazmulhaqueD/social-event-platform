@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router';
 import EventCard from '../components/EventCard';
 import axios from 'axios';
+import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 
 const UpcomingEvents = () => {
 
+    const { setLoading } = useContext(AuthContext);
     const initialEvents = useLoaderData();
     const [events, setEvents] = useState(initialEvents)
     console.log(events)
 
     const handleFilterEvent = (e) => {
+        setLoading(true);
         const selectedValue = e.target.value;
         axios.get(`https://social-serve-server.vercel.app/events?type=${selectedValue}`)
             .then(result => {
                 setEvents(result.data);
+                setLoading(false);
             })
         console.log(selectedValue)
     }
 
     const handleSearchByTitle = (e) => {
+        setLoading(true);
         e.preventDefault();
         const searchTitle = e.target.title.value;
         axios.get(`https://social-serve-server.vercel.app/events?search=${searchTitle}`)
             .then(result => {
                 setEvents(result.data);
+                setLoading(false)
             })
         console.log(searchTitle);
     }
