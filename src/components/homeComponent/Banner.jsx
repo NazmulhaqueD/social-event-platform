@@ -12,7 +12,7 @@ const Banner = () => {
             </div>
             <div className='text-center p-4 md:absolute md:top-8 md:left-1/2 md:transform md:-translate-x-1/2 nd:-translate-y-1/2'>
                 <p className='italic font-thin md:text-xl md:font-semibold'>Take Action, Make Impact</p>
-                <h1 className='text-2xl md:text-4xl  font-bold text-center py-4  text-black
+                <h1 className='text-2xl md:text-4xl  font-bold text-center py-4
                 '>
                     <h3>
                         <Typewriter

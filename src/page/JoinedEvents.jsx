@@ -3,14 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import EventCard from '../components/EventCard';
 import JoinedEventCard from '../components/JoinedEventCard';
+import IsEmptyEvents from '../components/IsEmptyEvents';
 
 const JoinedEvents = () => {
 
     const { user } = useContext(AuthContext);
     const [myJoinedEvents, setMyJoinedEvents] = useState(null)
+    const isEmptyEvents = myJoinedEvents;
 
     useEffect(() => {
-        axios.get(`https://social-serve-server.vercel.app/joinedEvents/${user?.email}`)
+        axios.get(`https://social-serve-server.vercel.app/joinedEvents/${user?.email}`, {
+
+            headers: { Authorization: `Bearer ${user?.accessToken}` }
+        })
             .then(result => {
                 setMyJoinedEvents(result.data);
             })
@@ -32,6 +37,7 @@ const JoinedEvents = () => {
                     ></JoinedEventCard>)
                 }
             </div>
+            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'joined'}></IsEmptyEvents>
         </div>
     );
 };

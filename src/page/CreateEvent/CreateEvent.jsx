@@ -23,7 +23,7 @@ const CreateEvent = () => {
         eventsInfo.postDate = new Date();
 
         // Event data save in the mongodb database 
-        axios.post('https://social-serve-server.vercel.app/events', eventsInfo)
+        axios.post('http://localhost:5000/events', eventsInfo)
             .then(result => {
                 if (result?.data.insertedId) {
                     setLoading(false)

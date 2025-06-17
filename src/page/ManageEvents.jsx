@@ -4,18 +4,23 @@ import axios from 'axios';
 // import ManageEventCardMobile from '../components/ManageEventCard';
 import ManageEventCard from '../components/ManageEventCard';
 import { NavLink } from 'react-router';
+import IsEmptyEvents from '../components/IsEmptyEvents';
 
 const ManageEvents = () => {
 
     const { user } = useContext(AuthContext);
     const [myCreateEvents, setMyCreateEvents] = useState(null);
+    const isEmptyEvents = myCreateEvents;
     console.log(myCreateEvents)
 
 
     useEffect(() => {
-        axios.get(`https://social-serve-server.vercel.app/events?email=${user?.email}`)
+        axios.get(`https://social-serve-server.vercel.app/manageEvents?email=${user?.email}`, {
+
+            headers: { Authorization: `Bearer ${user?.accessToken}` }
+        })
             .then(result => setMyCreateEvents(result.data));
-    }, [user.email])
+    }, [user])
 
     return (
         <div className='bg-base-200 my-8 rounded-2xl p-4 sm:min-h-[65vh]'>
@@ -31,16 +36,7 @@ const ManageEvents = () => {
                     ></ManageEventCard>)
                 }
             </div>
-            {
-                !myCreateEvents?.length && <div>
-                    <div className='max-w-md mx-auto flex justify-center flex-col mt-16
-             border-2 border-teal-500 p-8 rounded-xl'>
-                        <h1 className='text-6xl text-center text-error font-bold'>Opps!!!</h1>
-                        <p className='text-xl text-center py-6'>You haven't created any event yet</p>
-                        <NavLink to={'/createEvent'} className='btn btn-success mx-auto'>Create Event</NavLink>
-                    </div>
-                </div>
-            }
+            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'created'}></IsEmptyEvents>
         </div>
     );
 };
