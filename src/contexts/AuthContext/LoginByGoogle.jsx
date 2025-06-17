@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
 import { useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const LoginByGoogle = () => {
 
@@ -20,10 +21,9 @@ const LoginByGoogle = () => {
                     timer: 2000
                 });
                 navigate(`${location?.state ? location.state : '/'}`)
-                console.log(result.user);
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(error.message)
             })
     }
 

@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Loader from '../../components/Loader';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 
 const CreateEvent = () => {
@@ -12,6 +14,7 @@ const CreateEvent = () => {
     const { user } = useContext(AuthContext);
     const [loader, setLoader] = useState(false);
     const [eventDate, setEventDate] = useState(null);
+    const navigate = useNavigate();
 
     const handleCreateEvent = (e) => {
         setLoader(true);
@@ -22,7 +25,6 @@ const CreateEvent = () => {
         eventsInfo.eventDate = eventDate;
         eventsInfo.postDate = new Date();
 
-        // Event data save in the mongodb database 
         axios.post('https://social-serve-server.vercel.app/events', eventsInfo, {
 
             headers: { Authorization: `Bearer ${user?.accessToken}` }
@@ -30,6 +32,7 @@ const CreateEvent = () => {
             .then(result => {
                 if (result?.data.insertedId) {
                     setLoader(false)
+                    navigate('/manageEvents');
                     Swal.fire({
                         icon: "success",
                         title: 'You are created a event successfully!!',
@@ -37,10 +40,9 @@ const CreateEvent = () => {
                         timer: 2000
                     });
                 }
-                console.log(result.data)
             })
             .catch(error => {
-                console.log(error.message)
+                toast(error.message)
             })
     }
 

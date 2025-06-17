@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 
-const IsEmptyEvents = ({isEmptyEvents, created}) => {
+const IsEmptyEvents = ({isEmptyEvents, created, navigate}) => {
     return (
         <div>
             
@@ -11,7 +11,7 @@ const IsEmptyEvents = ({isEmptyEvents, created}) => {
                          border-2 border-teal-500 p-8 rounded-xl'>
                         <h1 className='text-6xl text-center text-error font-bold'>Opps!!!</h1>
                         <p className='text-xl text-center py-6'>You haven't {created} any event yet</p>
-                        <NavLink to={'/createEvent'} className='btn btn-success mx-auto'>{created} event</NavLink>
+                        <NavLink to={navigate} className='btn btn-success mx-auto'>{created} event</NavLink>
                     </div>
                 </div>
             }

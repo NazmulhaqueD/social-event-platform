@@ -11,7 +11,6 @@ const ManageEvents = () => {
     const { user } = useContext(AuthContext);
     const [myCreateEvents, setMyCreateEvents] = useState(null);
     const isEmptyEvents = myCreateEvents;
-    console.log(myCreateEvents)
 
 
     useEffect(() => {
@@ -36,7 +35,7 @@ const ManageEvents = () => {
                     ></ManageEventCard>)
                 }
             </div>
-            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'created'}></IsEmptyEvents>
+            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'created'} navigate={'/createEvent'}></IsEmptyEvents>
         </div>
     );
 };

@@ -26,7 +26,6 @@ const EventDetails = () => {
         // const joinedEvents = event;
         joinedEvents.join_id = event._id;
         joinedEvents.participant = user.email;
-        console.log(joinedEvents);
 
         axios.post('https://social-serve-server.vercel.app/joinedEvents', joinedEvents, {
 
@@ -37,10 +36,9 @@ const EventDetails = () => {
                     toast.success('You are participate this event successfully')
                     navigate('/joinedEvents')
                 }
-                console.log(result.data);
             })
             .catch(error => {
-                console.log(error)
+                toast(error)
             })
     }
 

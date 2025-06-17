@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import EventCard from '../components/EventCard';
 import JoinedEventCard from '../components/JoinedEventCard';
 import IsEmptyEvents from '../components/IsEmptyEvents';
+import { toast } from 'react-toastify';
 
 const JoinedEvents = () => {
 
@@ -20,7 +21,7 @@ const JoinedEvents = () => {
                 setMyJoinedEvents(result.data);
             })
             .catch(error => {
-                console.log(error)
+                toast(error)
             })
     }, [user])
 
@@ -37,7 +38,7 @@ const JoinedEvents = () => {
                     ></JoinedEventCard>)
                 }
             </div>
-            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'joined'}></IsEmptyEvents>
+            <IsEmptyEvents isEmptyEvents={isEmptyEvents} created={'joined'} navigate={'/upcomingEvents'}></IsEmptyEvents>
         </div>
     );
 };

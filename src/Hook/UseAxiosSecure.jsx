@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
+import { toast } from 'react-toastify';
 
 const axiosInstance = axios.create();
 
@@ -19,10 +20,10 @@ const UseAxiosSecure = () => {
         if (error.response?.status === 401 || error.response?.status === 403) {
             logOut()
                 .then(() => {
-                    console.log('signOut user for 401 or 403 status code ')
+
                 })
                 .catch(error => {
-                    console.log(error)
+                    toast(error)
                 })
         }
         return Promise.reject(error);

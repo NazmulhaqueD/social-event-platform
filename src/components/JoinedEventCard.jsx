@@ -7,7 +7,6 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
 
     const { user, setLoading } = useContext(AuthContext);
     const handleCancelEvent = () => {
-        setLoading(true)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -18,7 +17,7 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
+                setLoading(true)
                 fetch(`https://social-serve-server.vercel.app/cancelEvent/${event._id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${user?.accessToken}` }

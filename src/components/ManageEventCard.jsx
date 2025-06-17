@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
+import { toast } from 'react-toastify';
 
 const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
 
@@ -34,10 +35,9 @@ const ManageEventCard = ({ event, setMyCreateEvents, myCreateEvents }) => {
                                 icon: "success"
                             });
                         }
-                        console.log(result.data);
                     })
                     .catch(error => {
-                        console.log(error);
+                        toast.error(error);
                     })
 
             }

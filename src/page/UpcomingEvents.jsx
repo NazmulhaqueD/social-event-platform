@@ -9,7 +9,6 @@ const UpcomingEvents = () => {
     const { setLoading } = useContext(AuthContext);
     const initialEvents = useLoaderData();
     const [events, setEvents] = useState(initialEvents)
-    console.log(events)
 
     const handleFilterEvent = (e) => {
         setLoading(true);
@@ -19,7 +18,6 @@ const UpcomingEvents = () => {
                 setEvents(result.data);
                 setLoading(false);
             })
-        console.log(selectedValue)
     }
 
     const handleSearchByTitle = (e) => {
@@ -31,7 +29,6 @@ const UpcomingEvents = () => {
                 setEvents(result.data);
                 setLoading(false)
             })
-        console.log(searchTitle);
     }
 
     return (
