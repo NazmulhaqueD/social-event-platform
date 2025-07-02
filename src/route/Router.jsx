@@ -12,6 +12,7 @@ import EventDetails from "../page/EventDetails";
 import JoinedEvents from "../page/JoinedEvents";
 import ManageEvents from "../page/ManageEvents";
 import UpdateEvent from "../page/UpdateEvent";
+import ContactUs from "../page/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: '/createEvent',
                 element: <PrivateRoute><CreateEvent></CreateEvent></PrivateRoute>
+            },
+            {
+                path: 'contactUs',
+                element:<ContactUs></ContactUs>
             },
             {
                 path: '/register',

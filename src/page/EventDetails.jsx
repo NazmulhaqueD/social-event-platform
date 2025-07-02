@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const EventDetails = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, setLoading } = useContext(AuthContext);
     const { id } = useParams();
     const [event, setEvent] = useState(null)
     const navigate = useNavigate();
@@ -22,6 +22,7 @@ const EventDetails = () => {
     }, [id, user])
 
     const handleJoinEvent = () => {
+        setLoading(true);
         const { _id, ...joinedEvents } = event;
         // const joinedEvents = event;
         joinedEvents.join_id = event._id;
@@ -33,6 +34,7 @@ const EventDetails = () => {
         })
             .then(result => {
                 if (result?.data.insertedId) {
+                    setLoading(false)
                     toast.success('You are participate this event successfully')
                     navigate('/joinedEvents')
                 }
@@ -43,7 +45,7 @@ const EventDetails = () => {
     }
 
     return (
-        <div className="card bg-base-300 my-8 max-w-md mx-auto flex flex-col gap-4 h-full p-2 shadow-lg">
+        <div className="card bg-base-300 my-8 max-w-md mx-auto flex flex-col gap-4 h-full p-4 shadow-lg">
             <figure>
                 <img
                     className='w-full h-[300px] rounded-xl'

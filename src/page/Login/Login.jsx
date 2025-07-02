@@ -32,7 +32,7 @@ const Login = () => {
             .catch(error => {
                 toast(error)
             })
-    }
+    }      
 
     return (
         <div className="card bg-base-100 w-full mx-auto my-16 max-w-sm shrink-0 shadow-2xl">

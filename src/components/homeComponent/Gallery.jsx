@@ -16,11 +16,11 @@ const Gallery = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 md:p-6 gap-6'>
                 {
                     latestEvents?.map(latestEvent => <div
-                        className='shadow-lg shadow-black rounded-xl overflow-hidden group p-4 relative hover:scale-105 transition ease-in-out duration-300'
+                        className='shadow-sm hover:shadow-primary rounded-xl overflow-hidden group p-4 relative hover:scale-105 transition ease-in-out duration-300'
                         key={latestEvent.id}>
                         <div>
                             <img
-                                className='h-60 sm:h-72 w-full rounded-xl'
+                                className='h-56 w-full rounded-xl'
                                 src={latestEvent.photoURL} alt="" />
                         </div>
                         <p className='opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out absolute top-1/2 left-1/2 text-2xl text-teal-400 bg-black/30 p-4 rounded-lg transform -translate-1/2'>{latestEvent.title}</p>
