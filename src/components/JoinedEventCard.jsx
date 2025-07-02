@@ -49,7 +49,7 @@ const EventCard = ({ event, myJoinedEvents, setMyJoinedEvents }) => {
             className="card bg-base-100 w-full flex flex-col gap-4 h-full min-h-[450px] p-4 shadow-lg hover:shadow-2xl transition duration-300">
             <figure>
                 <img
-                    className='w-full h-[300px] rounded-xl'
+                    className='w-full h-[200px] rounded-xl'
                     src={event?.photoURL}
                     alt="Shoes" />
             </figure>
