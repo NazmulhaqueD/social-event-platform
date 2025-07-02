@@ -71,7 +71,7 @@ const UpdateEvent = () => {
     }
 
     return (
-        <div className='max-w-5xl mx-auto my-8 bg-base-300 rounded-2xl pt-8 px-2'>
+        <div className='max-w-5xl mx-auto my-8 bg-base-300 rounded-xl pt-8 p-4'>
             <h1 className='text-2xl md:text-4xl text-center font-bold text-teal-400 mb-8'>Update Your Event</h1>
             <form onSubmit={handleUpdateEvent}>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>

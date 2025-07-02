@@ -80,7 +80,7 @@ const UpcomingEvents = () => {
             {/* view table formate  */}
             <div className={`${isFormView ? 'block' : 'hidden'} rounded-xl shadow-sm shadow-primary`}>
                 <div className='overflow-x-auto w-full'>
-                    <table className={`table w-full min-h-[700px] rounded-xl`}>
+                    <table className={`table w-full min-w-[700px] rounded-xl`}>
                         <thead className=''>
                             <tr className='text-xl bg-base-300'>
                                 <th>No:</th>

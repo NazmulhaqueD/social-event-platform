@@ -14,6 +14,7 @@ import ManageEvents from "../page/ManageEvents";
 import UpdateEvent from "../page/UpdateEvent";
 import ContactUs from "../page/ContactUs";
 import AboutUs from "../page/aboutUs/AboutUs";
+import Volunteer from "../page/volunteer/Volunteer";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: 'aboutUs',
                 element:<AboutUs></AboutUs>
+            },
+            {
+                path: 'volunteer',
+                element:<Volunteer></Volunteer>
             },
             {
                 path: 'contactUs',

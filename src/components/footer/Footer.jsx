@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Footer = () => {
     return (
@@ -6,17 +7,13 @@ const Footer = () => {
             <footer className="footer max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 rounded-2xl">
                 <nav>
                     <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <NavLink className='link link-hover' to={'/createEvent'}>Create Events</NavLink>
+                    <NavLink className='link link-hover' to={'/joinedEvents'}>Join Events</NavLink>
                 </nav>
                 <nav>
                     <h6 className="footer-title">Company</h6>
-                    <a href='https://www.facebook.com/mdnajmulhaque.selim.9' target='_blank' className="link link-hover">About us</a>
-                    <a href='https://www.facebook.com/mdnajmulhaque.selim.9' target='_blank' className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <NavLink className='link link-hover' to={'/aboutUs'}>About Us</NavLink>
+                    <NavLink className='link link-hover' to={'/contactUs'}>Contact Us</NavLink>
                 </nav>
                 <nav>
                     <h6 className="footer-title">Social</h6>
