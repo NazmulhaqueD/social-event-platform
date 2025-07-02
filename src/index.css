@@ -3,7 +3,7 @@
 
 .activeLink a.active{
     color: rgb(25, 168, 168);
-    border-bottom: 2px solid green;
+    /* border-bottom: 2px solid green; */
 }
 
 .linkByImage{

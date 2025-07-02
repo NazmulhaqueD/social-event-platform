@@ -27,8 +27,22 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/'>home</NavLink>
         <NavLink to='/upcomingEvents'>Upcoming Events</NavLink>
-        <NavLink to='/createEvent'>Create Event</NavLink>
+        <NavLink to='/aboutUs'>About Us</NavLink>
         <NavLink to='/contactUs'>Contact Us</NavLink>
+
+        {
+            user && <NavLink >
+                Dashboard
+                {/* <div className="dropdown">
+                    <div tabIndex={0} role="button" className="">Dashboard</div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li><a>Item 1</a></li>
+                        <li><a>Item 2</a></li>
+                    </ul>
+                </div> */}
+            </NavLink>
+
+        }
 
     </>
 

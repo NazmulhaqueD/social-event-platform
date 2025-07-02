@@ -63,7 +63,7 @@ const Register = () => {
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button type='submit' className="btn btn-neutral w-full mt-4">Register</button>
                     <LoginByGoogle></LoginByGoogle>
-                    <p>Already have an account? <NavLink className={'text-teal-400 underline font-semibold text-xl'}>Login</NavLink></p>
+                    <p>Already have an account? <NavLink to='/login' className={'text-teal-400 underline font-semibold text-xl'}>Login</NavLink></p>
                 </form>
             </div>
         </div>

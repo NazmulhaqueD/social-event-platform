@@ -32,7 +32,7 @@ const features = [
 
 const Feature = () => {
     return (
-        <div className='bg-base-300 py-4 my-8 rounded-2xl'>
+        <div className='bg-base-300 py-4 my-8 rounded-xl'>
             <motion.h1
             initial={{y:50, opacity: 0}}
             animate={{y:0, opacity: 1}}

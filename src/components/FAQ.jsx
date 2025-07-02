@@ -30,14 +30,14 @@ const faqs = [
 
 const FAQ = () => {
     return (
-        <div className='bg-base-200 my-8 px-4 rounded-xl'>
-            <h1 className='text-4xl font-bold text-teal-400 py-8 md:py-16 text-center'>Frequently Asked Questions</h1>
+        <div className='bg-base-200 my p-8 my-8 px-4 rounded-xl'>
+            <h1 className='text-4xl font-bold text-teal-400 md:py-8 mb-8 text-center'>Frequently Asked Questions</h1>
             {
                 faqs.map((faq, index) => <div key={index}
                     className="collapse collapse-arrow bg-base-100 border border-base-300">
                     <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title font-semibold">How do I create an account?</div>
-                    <div className="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
+                    <div className="collapse-title font-semibold">{faq.question}</div>
+                    <div className="collapse-content text-sm">{faq.answer}</div>
                 </div>)
             }
         </div>

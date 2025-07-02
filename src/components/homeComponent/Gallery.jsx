@@ -11,7 +11,7 @@ const Gallery = () => {
             .then(data => setLatestEvents(data))
     }, [])
     return (
-        <div className='bg-base-200 rounded-2xl'>
+        <div className='bg-base-200 rounded-xl'>
             <h1 className='text-2xl md:text-4xl p-4 md:py-8 text-center text-teal-400 font-bold'>Latest Events Gallery</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 md:p-6 gap-6'>
                 {

@@ -6,7 +6,7 @@ const EventFormCard = ({ event, index }) => {
     // const date = new Date().toLocaleString();
     console.log(event)
     return (
-        <tr className='text-[16px] shadow-sm hover:shadow-primary'>
+        <tr className='text-[16px] shadow-sm hover:shadow-primary hover:bg-base-100'>
             <th>{index + 1} </th>
             <td>{event.title} </td>
             <td>{new Date(event.eventDate).toLocaleDateString()}</td>
