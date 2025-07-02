@@ -1,9 +1,37 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Volunteer = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, setLoading, loading } = useContext(AuthContext);
+    console.log(loading);
+
+    const handleApplicationOfVolunteer = (e) => {
+        setLoading(true);
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const volunteerData = Object.fromEntries(formData.entries());
+
+        volunteerData.date = new Date();
+        volunteerData.photo = user?.photoURL;
+        console.log(volunteerData, user);
+
+        axios.post('http://localhost:5000/volunteers', volunteerData)
+            .then(result => {
+                if (result?.data.insertedId) {
+                    setLoading(false)
+                    toast.success("Now You Are a Volunteer in The Social Serve")
+                }
+                console.log(result.data)
+            })
+            .catch(error => {
+                toast.error(error)
+            })
+
+    }
 
     return (
         <div className='bg-base-200 my-8 p-4 rounded-xl'>
@@ -36,12 +64,12 @@ const Volunteer = () => {
                 </div>
 
 
-                <form className="bg-base-100 p-6 rounded-xl shadow-sm space-y-4 shadow-primary">
+                <form onSubmit={handleApplicationOfVolunteer} className="bg-base-100 p-6 rounded-xl shadow-sm space-y-4 shadow-primary">
                     <div className="grid md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Full Name" value={user?.displayName} className="input input-bordered w-full" required />
-                        <input type="email" placeholder="Email Address" value={user?.email} className="input input-bordered w-full" required />
+                        <input type="text" placeholder="Full Name" name='name' value={user?.displayName} className="input input-bordered w-full" required />
+                        <input type="email" placeholder="Email Address" name='email' value={user?.email} className="input input-bordered w-full" required />
                     </div>
-                    <textarea className="textarea textarea-bordered w-full" placeholder="Why do you want to volunteer?" rows="4" required></textarea>
+                    <textarea className="textarea textarea-bordered w-full" name='message' placeholder="Why do you want to volunteer?" rows="4" required></textarea>
                     <div className='flex justify-center'>
                         <button type="submit" className="btn btn-primary">Submit Application</button>
                     </div>
