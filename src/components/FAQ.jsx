@@ -30,7 +30,7 @@ const faqs = [
 
 const FAQ = () => {
     return (
-        <div className='bg-base-200 my p-8 my-8 px-4 rounded-xl'>
+        <div className='max-w-7xl mx-auto bg-base-200 my p-8 my-8 px-4 rounded-xl'>
             <h1 className='text-4xl font-bold text-teal-400 md:py-8 mb-8 text-center'>Frequently Asked Questions</h1>
             {
                 faqs.map((faq, index) => <div key={index}

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 const Footer = () => {
     return (
         <div className='bg-base-300'>
-            <footer className="footer max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 rounded-2xl">
+            <footer className="footer max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 rounded-lg">
                 <nav>
                     <h6 className="footer-title">Services</h6>
                     <NavLink className='link link-hover' to={'/createEvent'}>Create Events</NavLink>

@@ -17,9 +17,9 @@ const Volunteer = () => {
 
         volunteerData.date = new Date();
         volunteerData.photo = user?.photoURL;
-        console.log(volunteerData, user);
+        console.log(volunteerData);
 
-        axios.post('http://localhost:5000/volunteers', volunteerData)
+        axios.post('https://social-serve-server.vercel.app/volunteers', volunteerData)
             .then(result => {
                 if (result?.data.insertedId) {
                     setLoading(false)
@@ -69,7 +69,23 @@ const Volunteer = () => {
                         <input type="text" placeholder="Full Name" name='name' value={user?.displayName} className="input input-bordered w-full" required />
                         <input type="email" placeholder="Email Address" name='email' value={user?.email} className="input input-bordered w-full" required />
                     </div>
-                    <textarea className="textarea textarea-bordered w-full" name='message' placeholder="Why do you want to volunteer?" rows="4" required></textarea>
+                    <div>
+                        <fieldset className="fieldset w-full">
+                            <legend className="fieldset-legend">Volunteer Role</legend>
+                            <select defaultValue="Pick a browser" name='role' className="select w-full">
+                                <option disabled={true}>Pick a Role</option>
+                                <option>Social Media Manager</option>
+                                <option>Content Writer</option>
+                                <option>Backend Developer</option>
+                                <option>Event Coordinator</option>
+                                <option>Community Manager</option>
+                                <option>Community Manager</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <textarea className="textarea textarea-bordered w-full" name='message' placeholder="Why do you want to volunteer?" rows="4" required></textarea>
+                    </div>
                     <div className='flex justify-center'>
                         <button type="submit" className="btn btn-primary">Submit Application</button>
                     </div>

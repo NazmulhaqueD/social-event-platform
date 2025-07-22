@@ -8,7 +8,7 @@ const Error = () => {
     }
     return (
         <div className='h-screen flex flex-col justify-center items-center'>
-            <div className='bg-gray-200 p-16 rounded-2xl'>
+            <div className='bg-gray-200 p-16 rounded-lg'>
 
                 <h1 className='text-center text-5xl my-4'>Page Not Found</h1>
                 <div>

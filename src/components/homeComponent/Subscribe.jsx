@@ -13,8 +13,8 @@ const Subscribe = () => {
 
 
     return (
-        <div className='bg-base-200 rounded-xl'>
-            <div className=' my-8 py-2 md:py-6 max-w-3xl mx-auto rounded-2xl'>
+        <div className='max-w-7xl mx-auto bg-base-200 rounded-xl'>
+            <div className=' my-8 py-2 md:py-6 max-w-3xl mx-auto rounded-lg'>
                 <h1 className='text-2xl sm:text-4xl text-center font-bold py-4 text-teal-400'>Subscribe to Our Newsletter</h1>
                 <p className='text-xl italic text-center'>Join our community to get event updates</p>
                 <div className='p-6 w-full'>
