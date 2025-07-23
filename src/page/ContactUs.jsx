@@ -13,7 +13,7 @@ const ContactUs = () => {
     }
 
     return (
-        <div id='contact' className='max-w-7xl mx-auto min-h-[70vh] bg-base-300 mb-8 rounded-xl p-4 mt-16 lg:mt-0 flex flex-col items-center justify-center'>
+        <div id='contact' className='max-w-7xl mx-auto min-h-[70vh] bg-base-300 mb-8 rounded-lg p-4  my-8 flex flex-col items-center justify-center'>
             <div>
                 <h1 className='text-center text-3xl lg:text-4xl text-teal-400 font-bold mb-16'>Contact Me</h1>
                 <section className='w-full grid grid-cols-1 md:grid-cols-2 gap-6'>
