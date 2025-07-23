@@ -10,7 +10,7 @@ const Dashboard = () => {
             <div className="drawer-content">
                 {/* Page content here */}
                 <DashNav></DashNav>
-                <div className='bg-base-300 rounded-lg min-h-[87vh]'>
+                <div className='bg-base-300 rounded-sm min-h-[89vh] z-10'>
                     <Outlet></Outlet>
                 </div>
             </div>
