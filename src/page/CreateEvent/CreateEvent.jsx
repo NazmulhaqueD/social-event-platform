@@ -47,7 +47,7 @@ const CreateEvent = () => {
     }
 
     return (
-        <div className={`my-8 bg-base-300 rounded-xl py-8 px-2 md:px-4 relative ${loader ? 'opacity-50' : 'opacity-100'}`}>
+        <div className={`rounded-xl py-8 px-2 md:px-4 relative ${loader ? 'opacity-50' : 'opacity-100'}`}>
             <h1 className='text-2xl md:text-4xl text-center font-bold text-teal-400 mb-8'>Create a New Event</h1>
             <div className='max-w-5xl mx-auto p-4 rounded-lg bg-base-200 shadow'>
                 <form onSubmit={handleCreateEvent}>

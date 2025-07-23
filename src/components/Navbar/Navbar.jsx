@@ -21,7 +21,7 @@ const Navbar = () => {
         <NavLink to='/contactUs'>Contact Us</NavLink>
         <NavLink to='/volunteer'>Volunteer</NavLink>
         {
-            user?.email && <NavLink to='/dashboard'>Dashboard</NavLink>
+            user?.email && <NavLink to='/myProfile'>Dashboard</NavLink>
         }
     </>
 
@@ -39,7 +39,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <h2 className="text-2xl md:text text-accent font-bold">Social Events</h2>
+                    <h2 className="text-2xl md:text text-accent font-bold"><NavLink to={'/'}>Social Events</NavLink></h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-x-4 font-semibold activeLink">

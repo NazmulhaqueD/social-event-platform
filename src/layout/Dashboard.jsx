@@ -5,12 +5,12 @@ import AsideDash from '../components/dashboard/AsideDash';
 
 const Dashboard = () => {
     return (
-        <div className="drawer gap-6 lg:drawer-open">
+        <div className="drawer lg:gap-6 lg:drawer-open">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 {/* Page content here */}
                 <DashNav></DashNav>
-                <div>
+                <div className='bg-base-300 rounded-lg min-h-[87vh]'>
                     <Outlet></Outlet>
                 </div>
             </div>

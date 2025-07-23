@@ -16,6 +16,7 @@ import ContactUs from "../page/ContactUs";
 import AboutUs from "../page/aboutUs/AboutUs";
 import Volunteer from "../page/volunteer/Volunteer";
 import Dashboard from "../layout/Dashboard";
+import MyProfile from "../page/volunteer/myProfile/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -36,10 +37,7 @@ export const router = createBrowserRouter([
                 path: '/eventDetails/:id',
                 element: <PrivateRoute><EventDetails></EventDetails></PrivateRoute>
             },
-            {
-                path: '/joinedEvents',
-                element: <PrivateRoute><JoinedEvents></JoinedEvents></PrivateRoute>
-            },
+           
             {
                 path: '/manageEvents',
                 element: <PrivateRoute><ManageEvents></ManageEvents></PrivateRoute>
@@ -50,10 +48,7 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loader></Loader>,
                 element: <PrivateRoute><UpdateEvent></UpdateEvent></PrivateRoute>
             },
-            {
-                path: '/createEvent',
-                element: <PrivateRoute><CreateEvent></CreateEvent></PrivateRoute>
-            },
+            
             {
                 path: 'aboutUs',
                 element:<AboutUs></AboutUs>
@@ -77,8 +72,26 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: 'dashboard',
-        element: <Dashboard></Dashboard>
+        path: '/',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: 'myProfile',
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: '/createEvent',
+                element: <CreateEvent></CreateEvent>
+            },
+             {
+                path: '/joinedEvents',
+                element: <JoinedEvents></JoinedEvents>
+            },
+            {
+                path: '/manageEvents',
+                element:<ManageEvents></ManageEvents>
+            },
+        ]
     },
     {
         path: '/*',
