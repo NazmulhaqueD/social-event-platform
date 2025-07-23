@@ -37,18 +37,12 @@ export const router = createBrowserRouter([
                 path: '/eventDetails/:id',
                 element: <PrivateRoute><EventDetails></EventDetails></PrivateRoute>
             },
-           
-            {
-                path: '/manageEvents',
-                element: <PrivateRoute><ManageEvents></ManageEvents></PrivateRoute>
-            },
             {
                 path: '/eventUpdate/:id',
                 loader: ({ params }) => fetch(`https://social-serve-server.vercel.app/events/${params.id}`),
                 hydrateFallbackElement: <Loader></Loader>,
                 element: <PrivateRoute><UpdateEvent></UpdateEvent></PrivateRoute>
-            },
-            
+            },           
             {
                 path: 'aboutUs',
                 element:<AboutUs></AboutUs>
