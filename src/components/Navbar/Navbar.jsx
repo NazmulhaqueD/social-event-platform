@@ -1,28 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
-import { toast } from 'react-toastify';
+import ThemeToggle from '../shared/ThemeToggle';
+import Logout from '../shared/Logout';
 
 const Navbar = () => {
 
-    const [isDark, setIsDark] = useState(false);
+    
     const [isDropdown, setIsDropdown] = useState(false);
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    const handleLogout = () => {
-        logOut()
-            .then(() => {
-                toast('logout successfully');
-            })
-            .catch(error => {
-                toast.error(error.message)
-            })
-    }
+    
 
-    // dark or light mode toggle implement here 
-    useEffect(() => {
-        document.querySelector('html').setAttribute('data-theme', isDark ? 'dark' : 'light')
-    }, [isDark])
+    
 
     const links = <>
         <NavLink to='/'>home</NavLink>
@@ -58,7 +48,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end items-center gap-2">
                     <div>
-                        <input onClick={() => setIsDark(!isDark)} type="checkbox" defaultChecked className="toggle toggle-lg" />
+                        <ThemeToggle></ThemeToggle>
                     </div>
                     <div>
                         {
@@ -80,8 +70,8 @@ const Navbar = () => {
                     <div>
                         {
                             user?.email ?
-                                <NavLink onClick={handleLogout} className='btn btn-sm btn-primary'>LogOut</NavLink>
-                                :
+                            <Logout></Logout>
+                            :
                                 <NavLink to={'/login'} className='btn btn-sm btn-success'>Login</NavLink>
                         }
                     </div>
