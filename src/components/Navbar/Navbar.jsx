@@ -30,7 +30,9 @@ const Navbar = () => {
         <NavLink to='/aboutUs'>About Us</NavLink>
         <NavLink to='/contactUs'>Contact Us</NavLink>
         <NavLink to='/volunteer'>Volunteer</NavLink>
-
+        {
+            user?.email && <NavLink to='/dashboard'>Dashboard</NavLink>
+        }
     </>
 
     return (
@@ -47,7 +49,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <h2 className="text-2xl font-bold">Social Events</h2>
+                    <h2 className="text-2xl md:text text-accent font-bold">Social Events</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-x-4 font-semibold activeLink">

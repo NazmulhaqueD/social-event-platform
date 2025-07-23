@@ -11,6 +11,9 @@
     z-index: 5;
     padding: 20px;
 }
+.activeLink a:hover{
+    color: teal;
+}
 
 .linkByImage a:hover{
     color: teal;

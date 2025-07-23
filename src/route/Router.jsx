@@ -15,6 +15,7 @@ import UpdateEvent from "../page/UpdateEvent";
 import ContactUs from "../page/ContactUs";
 import AboutUs from "../page/aboutUs/AboutUs";
 import Volunteer from "../page/volunteer/Volunteer";
+import Dashboard from "../layout/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
                 element: <Login></Login>
             },
         ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>
     },
     {
         path: '/*',
