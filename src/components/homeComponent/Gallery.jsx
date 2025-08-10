@@ -11,8 +11,8 @@ const Gallery = () => {
             .then(data => setLatestEvents(data))
     }, [])
     return (
-        <div className='max-w-7xl mx-auto mt-8 p-4 rounded-xl'>
-            <h1 className='text-2xl md:text-4xl text-teal-400 text-center py-8 font-bold'>Latest Events Gallery</h1>
+        <div className='max-w-7xl mx-auto mt4 md:mt-8 p-4 rounded-xl'>
+            <h1 className='text-2xl md:text-4xl text-teal-400 text-center py-4 md:py-4 font-bold'>Latest Events Gallery</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     latestEvents?.map(latestEvent => <div

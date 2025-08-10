@@ -33,8 +33,8 @@ const volunteers = [
 
 const OurVolunteers = () => {
     return (
-        <section className="max-w-7xl mx-auto mt-8 p-4 rounded-xl">
-            <h2 className="text-2xl md:text-4xl text-teal-400 text-center py-8 font-bold">
+        <section className="max-w-7xl mx-auto mt4 md:mt-8 p-4 rounded-xl">
+            <h2 className="text-2xl md:text-4xl text-teal-400 text-center py-4 md:py-4 font-bold">
                 Our Volunteers
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">

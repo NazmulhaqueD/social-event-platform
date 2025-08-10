@@ -32,23 +32,22 @@ const features = [
 
 const Feature = () => {
     return (
-        <div className='p-4 mt-8 max-w-7xl mx-auto rounded-xl'>
+        <div className='max-w-7xl mx-auto p-4 mt-4 md:mt-8 rounded-xl'>
             <motion.h1
-            initial={{y:50, opacity: 0}}
-            animate={{y:0, opacity: 1}}
-            transition={{duration: 1}}
-            className='text-2xl md:text-4xl text-teal-400 text-center py-8 font-bold'> Features That Make Us Unique </motion.h1>
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className='text-2xl md:text-4xl text-teal-400 text-center py-4 md:py-8 font-bold'> Features That Make Us Unique </motion.h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {
                     features.map(feature => <motion.div
-                    initial={{y:50, opacity:0}}
-                    animate={{y:0, opacity: 1}}
-                    transition={{duration: 5, ease: 'easeInOut'}}
-                    className='shadow-lg p-6 bg-base-100 rounded-xl hover:scale-105 transition duration-300'
-                    key={feature.id}>
-                        <div className=' rounded-xl p-6'>
-                            <img className='w-24 h-24 mx-auto' src={feature.icon} alt="" />
-                        </div>
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 5, ease: 'easeInOut' }}
+                        className='shadow-lg p-6 bg-base-100 rounded-xl hover:scale-105 transition duration-300'
+                        key={feature.id}>
+
+                        <img className='w-24 h-24 mx-auto' src={feature.icon} alt="" />
                         <div className='text-center'>
                             <h1 className='text-xl font-bold py-4'>{feature.title}</h1>
                             <p className='text-sm'>{feature.description}</p>

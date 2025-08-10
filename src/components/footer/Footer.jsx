@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 
 const Footer = () => {
     return (
-        <div className='bg-base-300'>
+        <div className='bg-base-300 mt-6 md:mt-8'>
             <footer className="footer max-w-7xl mx-auto sm:footer-horizontal text-base-content p-10 rounded-lg">
                 <nav>
                     <h6 className="footer-title">Services</h6>

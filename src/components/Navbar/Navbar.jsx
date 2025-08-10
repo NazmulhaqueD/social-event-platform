@@ -3,16 +3,17 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import ThemeToggle from '../shared/ThemeToggle';
 import Logout from '../shared/Logout';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
 
-    
+
     const [isDropdown, setIsDropdown] = useState(false);
     const { user } = useContext(AuthContext);
 
-    
 
-    
+
+
 
     const links = <>
         <NavLink to='/'>home</NavLink>
@@ -39,7 +40,9 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <h2 className="text-2xl md:text-3xl text-primary font-bold"><NavLink to={'/'}>Social Events</NavLink></h2>
+                    <h2 className="text-2xl md:text-3xl text-primary font-bold">
+                        <NavLink to={'/'}>Events</NavLink>
+                    </h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-x-4 font-semibold activeLink">
@@ -70,8 +73,8 @@ const Navbar = () => {
                     <div>
                         {
                             user?.email ?
-                            <Logout></Logout>
-                            :
+                                <Logout></Logout>
+                                :
                                 <NavLink to={'/login'} className='btn btn-sm btn-success'>Login</NavLink>
                         }
                     </div>
