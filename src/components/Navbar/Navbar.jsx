@@ -27,7 +27,7 @@ const Navbar = () => {
 
     return (
         <nav className='bg-base-300 shadow-sm sticky top-0 z-50'>
-            <div className="navbar px-4 ">
+            <div className="max-w-7xl mx-auto navbar px-4 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +55,7 @@ const Navbar = () => {
                             user ?
                                 <span className='relative'>
                                     <div className="tooltip tooltip-bottom w-full flex flex-col items-center" data-tip={`${user?.displayName}`}>
-                                        <img onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
+                                        <img referrerPolicy='no-referrer' onClick={() => setIsDropdown(!isDropdown)} src={user.photoURL} className='w-12 h-12 rounded-full cursor-pointer' alt="" />
                                     </div>
                                     <div className={`flex flex-col z-20 bg-base-300 p-4 rounded-xl gap-y-2 transition-all duration-300 absolute activeLink linkByImage w-32 -right-18 
                                     ${isDropdown ? 'top-14' : '-top-56'}`}>

@@ -4,10 +4,10 @@ import { Typewriter } from 'react-simple-typewriter';
 
 const Banner = () => {
     return (
-        <div className='bg-base-300 relative'>
+        <div className='relative'>
             <div>
                 <img src={'https://i.postimg.cc/wjdgJHwc/pexels-cottonbro-6591147.jpg'}
-                    className='w-full h-[60%] md:h-[500px] lg:h-[700px] rounded-sm'
+                    className='w-full h-[60%] md:h-[500px] lg:h-[700px] rounded-sm opacity-80'
                     alt="" />
             </div>
             <div className='text-center p-4 md:absolute md:top-8 md:left-1/2 md:transform md:-translate-x-1/2 nd:-translate-y-1/2'>

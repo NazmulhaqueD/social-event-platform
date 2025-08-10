@@ -8,6 +8,7 @@ import { NavLink } from 'react-router';
 import Logout from '../shared/Logout';
 
 const AsideDash = () => {
+
     return (
         <div className=''>
             <h1 className='text-4xl font-bold text-primary mb-12'><NavLink to={'/'}>Social Events</NavLink></h1>

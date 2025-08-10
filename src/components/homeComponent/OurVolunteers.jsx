@@ -33,15 +33,15 @@ const volunteers = [
 
 const OurVolunteers = () => {
     return (
-        <section className="bg-base-200 py-8 my-12 px-4 max-w-7xl mx-auto rounded-xl">
-            <h2 className="text-3xl font-bold text-center mb-8">
+        <section className="max-w-7xl mx-auto mt-8 p-4 rounded-xl">
+            <h2 className="text-2xl md:text-4xl text-teal-400 text-center py-8 font-bold">
                 Our Volunteers
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 {volunteers.map((volunteer) => (
                     <div
                         key={volunteer.id}
-                        className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
+                        className="bg-base-100 rounded-xl shadow-lg p-6 flex flex-col items-center"
                     >
                         <img
                             src={volunteer.image}
@@ -51,7 +51,7 @@ const OurVolunteers = () => {
                         <h3 className="text-xl font-semibold">
                             {volunteer.name}
                         </h3>
-                        <p className="text-gray-600">{volunteer.role}</p>
+                        <p className="">{volunteer.role}</p>
                     </div>
                 ))}
             </div>

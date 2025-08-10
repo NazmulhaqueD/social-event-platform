@@ -30,8 +30,8 @@ const faqs = [
 
 const FAQ = () => {
     return (
-        <div className='max-w-7xl mx-auto bg-base-200 my p-8 my-8 px-4 rounded-xl'>
-            <h1 className='text-4xl font-bold text-teal-400 md:py-8 mb-8 text-center'>Frequently Asked Questions</h1>
+        <div className='max-w-7xl mx-auto mt-8 p-4 rounded-xl'>
+            <h1 className='text-2xl md:text-4xl text-teal-400 text-center py-8 font-bold'>Frequently Asked Questions</h1>
             {
                 faqs.map((faq, index) => <div key={index}
                     className="collapse collapse-arrow bg-base-100 border border-base-300">

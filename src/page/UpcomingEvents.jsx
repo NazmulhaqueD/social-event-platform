@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router';
 import EventCard from '../components/EventCard';
 import axios from 'axios';
