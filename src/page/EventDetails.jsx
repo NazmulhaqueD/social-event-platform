@@ -45,22 +45,22 @@ const EventDetails = () => {
     }
 
     return (
-        <div className="card bg-base-300 my-8 max-w-md mx-auto flex flex-col gap-4 h-full p-4 shadow-lg">
-            <figure>
-                <img
-                    className='w-full h-[300px] rounded-xl'
+
+        <div className='max-w-7xl mx-auto mt-8 md:mt-12 p-4 rounded-xl min-h-[70vh] shadow-md'>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 '>
+                <img referrerPolicy='no-referrer' className='w-full h-[30vh] md:h-[40vh] lg:h-[60vh] rounded-xl'
                     src={event?.photoURL}
                     alt="Shoes" />
-            </figure>
-            <div className="flex flex-col gap-3 flex-grow">
-                <h2 className="card-title font-semibold text-xl">{event?.title}</h2>
-                <span><p className='text-xl italic font-thin'>{event?.location}</p></span>
-                <h2>{new Date(event?.eventDate).toDateString()}</h2>
-                <p>{event?.eventType}</p>
-                <p className='py-2 italic font-thin'>{event?.Descriptions}</p>
-            </div>
-            <div className="card-actions justify-center mt-auto">
-                <button onClick={handleJoinEvent} className="btn btn-primary w-full mt-4">Join Event</button>
+
+                <div className="flex flex-col gap-3 flex-grow">
+                    <h2 className="card-title font-semibold text-xl md:text-2xl lg:text-4xl">{event?.title}</h2>
+                    <span><p className='text-xl italic font-thin'>{event?.location}</p></span>
+                    <h2>{new Date(event?.eventDate).toDateString()}</h2>
+                    <p>{event?.eventType}</p>
+                    <p className='py-2 italic font-thin'>{event?.Descriptions}</p>
+                    <button onClick={handleJoinEvent} className="btn btn-primary w-auto block max-w-max">Join Event</button>
+                </div>
             </div>
         </div>
     );

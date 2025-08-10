@@ -3,7 +3,6 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import ThemeToggle from '../shared/ThemeToggle';
 import Logout from '../shared/Logout';
-import logo from '../../assets/logo.png';
 
 const Navbar = () => {
 
