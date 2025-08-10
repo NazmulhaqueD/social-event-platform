@@ -34,7 +34,7 @@ const Volunteer = () => {
     }
 
     return (
-        <div className='bg-base-200 max-w-7xl mx-auto my-8 p-4 rounded-xl'>
+        <div className='max-w-7xl mx-auto mt4 md:mt-8 p-4 rounded-xl'>
             <section className="w-full mx-auto px-4 py-12">
                 <h2 className="text-4xl font-bold text-center mb-6 text-teal-400">Become a Volunteer</h2>
                 <p className="text-center mb-10">
