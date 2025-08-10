@@ -17,8 +17,8 @@ const EventCard = ({ event }) => {
                     alt="Shoes" />
             </figure>
             <div className='rounded-xl bg-base-100'>
-                <div className="flex flex-col gap-3 flex-grow">
-                    <h2 className="card-title font-bold text-xl">{event.title}</h2>
+                <div className="flex flex-col gap-2 flex-grow">
+                    <h2 className="card-title pt-4 font-bold text-xl">{event.title}</h2>
                     {/* <span><p className='text-xl italic font-semibold'>{event.location}</p></span> */}
                     {/* <p className='text-sm'>creator: {event.creator}</p> */}
                     <h2>{new Date(event.eventDate).toDateString()}</h2>
