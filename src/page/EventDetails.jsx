@@ -5,31 +5,6 @@ import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import { toast } from 'react-toastify';
 
 
-const comments = [
-  {
-    userName: "Rakib Hasan",
-    userEmail: "rakib@gmail.com",
-    userPhoto: "https://i.ibb.co/gwXQ3bj/user1.jpg",
-    commentText: "I’ll join this event! Sounds amazing 🌱",
-    createdAt: "2025-10-23T15:45:00Z",
-  },
-  {
-    userName: "Sadia Khatun",
-    userEmail: "sadia@example.com",
-    userPhoto: "https://i.ibb.co/mtMmwHk/user2.jpg",
-    commentText: "Please add me to the Kurigram group chat 🙌",
-    createdAt: "2025-10-23T16:10:00Z",
-  },
-  {
-    userName: "Farhan Rahman",
-    userEmail: "farhan@example.com",
-    userPhoto: "https://i.ibb.co/vjsnGVZ/user3.jpg",
-    commentText: "I attended last time — the experience was great!",
-    createdAt: "2025-10-23T17:00:00Z",
-  },
-];
-
-
 const EventDetails = () => {
 
   const { user, setLoading } = useContext(AuthContext);
@@ -37,6 +12,9 @@ const EventDetails = () => {
   const [event, setEvent] = useState(null)
   const navigate = useNavigate();
   const [newComment, setNewComment] = useState();
+  const [comments, setComments] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
 
   useEffect(() => {
     axios.get(`https://social-serve-server.vercel.app/events/${id}`, {
@@ -47,6 +25,12 @@ const EventDetails = () => {
         setEvent(result.data)
       })
   }, [id, user])
+
+  useEffect(() => {
+    axios.get(`https://social-serve-server.vercel.app/comments?eventId=${id}`)
+      .then(res => setComments(res.data))
+      .catch(err => console.error(err));
+  }, [id, user]);
 
   const handleJoinEvent = () => {
     setLoading(true);
@@ -71,9 +55,39 @@ const EventDetails = () => {
       })
   }
 
+  // handleComment for post comment
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-  }
+
+    if (!newComment?.trim()) {
+      toast.warn("Please write something before posting!");
+      return;
+    }
+
+    const commentData = {
+      userName: user?.displayName || "Anonymous User",
+      userEmail: user?.email,
+      userPhoto: user?.photoURL || "https://i.ibb.co/gwXQ3bj/default-user.png",
+      commentText: newComment,
+      eventId: id,
+      createdAt: new Date().toISOString(),
+    };
+
+    setNewComment("");
+
+    axios.post(`https://social-serve-server.vercel.app/comments`, commentData)
+      .then(res => {
+        if (res.data.insertedId) {
+          setComments([commentData, ...comments,]);
+          toast.success("Comment posted successfully!");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Failed to post comment!");
+      });
+  };
+
 
   return (
 
@@ -117,27 +131,43 @@ const EventDetails = () => {
         </form>
 
         {/* Comments List */}
+        {/* Comments List */}
         <div className="space-y-4">
           {comments.length > 0 ? (
-            comments.map((cmt, index) => (
-              <div key={index} className="flex gap-3 items-start p-3 bg-gray-50 rounded-lg shadow-sm">
-                <img
-                  src={cmt.userPhoto}
-                  alt={cmt.userName}
-                  className="w-10 h-10 rounded-full"
-                  referrerPolicy="no-referrer"
-                />
-                <div>
-                  <h4 className="font-semibold">{cmt.userName}</h4>
-                  <p className="text-sm text-gray-600">{new Date(cmt.createdAt).toLocaleString()}</p>
-                  <p className="mt-1">{cmt.commentText}</p>
+            <>
+              {(showAll ? comments : comments.slice(0, 4)).map((cmt, index) => (
+                <div key={index} className="flex gap-3 items-start p-3 bg-gray-50 rounded-lg shadow-sm">
+                  <img
+                    src={cmt.userPhoto}
+                    alt={cmt.userName}
+                    className="w-10 h-10 rounded-full"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{cmt.userName}</h4>
+                    <p className="text-sm text-gray-600">{new Date(cmt.createdAt).toLocaleString()}</p>
+                    <p className="mt-1">{cmt.commentText}</p>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+
+              {/* View All / Show Less Button */}
+              {comments.length > 8 && (
+                <div className="text-center mt-4">
+                  <button
+                    onClick={() => setShowAll(!showAll)}
+                    className="btn btn-outline btn-sm"
+                  >
+                    {showAll ? "Show Less" : `View All Comments (${comments.length})`}
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <p className="text-gray-500">No comments yet. Be the first to comment!</p>
           )}
         </div>
+
       </div>
     </div>
   );
