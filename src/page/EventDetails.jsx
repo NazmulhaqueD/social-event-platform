@@ -3,6 +3,21 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import { toast } from 'react-toastify';
+import EventParticipants from '../components/eventDetails/EventParticipants';
+const participants = [
+  {
+    name: "Rakib Hasan",
+    photo: "https://i.ibb.co/gwXQ3bj/user1.jpg",
+  },
+  {
+    name: "Sadia Khatun",
+    photo: "https://i.ibb.co/mtMmwHk/user2.jpg",
+  },
+  {
+    name: "Farhan Rahman",
+    photo: "https://i.ibb.co/vjsnGVZ/user3.jpg",
+  },
+];
 
 
 const EventDetails = () => {
@@ -37,7 +52,9 @@ const EventDetails = () => {
     const { _id, ...joinedEvents } = event;
     // const joinedEvents = event;
     joinedEvents.join_id = event._id;
+    joinedEvents.participantName = user.displayName;
     joinedEvents.participant = user.email;
+    joinedEvents.participantPhoto = user.photoURL;
 
     axios.post('https://social-serve-server.vercel.app/joinedEvents', joinedEvents, {
 
@@ -108,6 +125,10 @@ const EventDetails = () => {
         </div>
       </div>
 
+      {/* participant of this Event */}
+      <EventParticipants eventId={id}></EventParticipants>
+
+      {/* discussion for comments */}
       <div className="mt-10 border-t pt-6">
         <h3 className="text-2xl font-semibold mb-4">💬 Discussion</h3>
 
@@ -130,7 +151,6 @@ const EventDetails = () => {
           </button>
         </form>
 
-        {/* Comments List */}
         {/* Comments List */}
         <div className="space-y-4">
           {comments.length > 0 ? (
