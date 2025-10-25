@@ -10,11 +10,7 @@ const Navbar = () => {
 
     const [isDropdown, setIsDropdown] = useState(false);
     const { user } = useContext(AuthContext);
-
-
-
-
-
+    
     const links = <>
         <NavLink to='/'>home</NavLink>
         <NavLink to='/upcomingEvents'>Upcoming Events</NavLink>
