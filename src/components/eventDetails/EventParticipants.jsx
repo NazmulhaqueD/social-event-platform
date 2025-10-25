@@ -5,7 +5,7 @@ const EventParticipants = ({ eventId }) => {
     const [participants, setParticipants] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/joinedEvents?eventId=${eventId}`)
+        axios.get(`https://social-serve-server.vercel.app/joinedEvents?eventId=${eventId}`)
             .then(res => setParticipants(res.data))
             .catch(err => console.error(err));
     }, [eventId]);

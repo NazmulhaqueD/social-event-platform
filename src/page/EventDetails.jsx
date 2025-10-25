@@ -4,20 +4,6 @@ import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import { toast } from 'react-toastify';
 import EventParticipants from '../components/eventDetails/EventParticipants';
-const participants = [
-  {
-    name: "Rakib Hasan",
-    photo: "https://i.ibb.co/gwXQ3bj/user1.jpg",
-  },
-  {
-    name: "Sadia Khatun",
-    photo: "https://i.ibb.co/mtMmwHk/user2.jpg",
-  },
-  {
-    name: "Farhan Rahman",
-    photo: "https://i.ibb.co/vjsnGVZ/user3.jpg",
-  },
-];
 
 
 const EventDetails = () => {

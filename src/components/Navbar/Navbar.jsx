@@ -3,6 +3,7 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import ThemeToggle from '../shared/ThemeToggle';
 import Logout from '../shared/Logout';
+import logo from "../../assets/socialServ.png";
 
 const Navbar = () => {
 
@@ -40,7 +41,9 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <h2 className="text-2xl md:text-3xl text-primary font-bold">
-                        <NavLink to={'/'}>Events</NavLink>
+                        <NavLink to={'/'}>
+                            <img src={logo} alt="N/a" className='h-16 w-full'/>
+                        </NavLink>
                     </h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
