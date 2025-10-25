@@ -1,62 +1,66 @@
-import React from "react";
-
-const volunteers = [
-    {
-        id: 1,
-        name: "Md. Nazmul Haque",
-        role: "Team Leader",
-        image:
-            "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-        id: 2,
-        name: "Sakib Hasan",
-        role: "Developer",
-        image:
-            "https://randomuser.me/api/portraits/men/65.jpg",
-    },
-    {
-        id: 3,
-        name: "Fatima Akter",
-        role: "Designer",
-        image:
-            "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-        id: 4,
-        name: "Rafiq Islam",
-        role: "Content Writer",
-        image:
-            "https://randomuser.me/api/portraits/men/85.jpg",
-    },
-];
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Marquee from "react-fast-marquee";
 
 const OurVolunteers = () => {
-    return (
-        <section className="max-w-7xl mx-auto mt4 md:mt-8 p-4 rounded-xl">
-            <h2 className="text-2xl md:text-4xl text-teal-400 text-center py-4 md:py-4 font-bold">
-                Our Volunteers
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {volunteers.map((volunteer) => (
-                    <div
-                        key={volunteer.id}
-                        className="bg-base-100 rounded-xl shadow-lg p-6 flex flex-col items-center"
-                    >
-                        <img
-                            src={volunteer.image}
-                            alt={volunteer.name}
-                            className="w-24 h-24 rounded-full object-cover mb-4"
-                        />
-                        <h3 className="text-xl font-semibold">
-                            {volunteer.name}
-                        </h3>
-                        <p className="">{volunteer.role}</p>
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+  const [volunteers, setVolunteers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://social-serve-server.vercel.app/volunteers")
+      .then((res) => setVolunteers(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const firstRow = volunteers.slice(0, Math.ceil(volunteers.length / 2));
+  const secondRow = volunteers.slice(Math.ceil(volunteers.length / 2));
+
+  return (
+    <section className="max-w-7xl mx-auto mt-8 p-4 rounded-xl overflow-hidden">
+      <h2 className="text-2xl md:text-4xl text-teal-400 text-center py-4 font-bold">
+        Our Volunteers
+      </h2>
+
+      {/* First Row - Left to Right */}
+      <Marquee speed={40} gradient={false} pauseOnHover={true}>
+        {firstRow.map((v) => (
+          <div
+            key={v._id}
+            className="bg-base-100 mx-4 rounded-xl shadow-lg p-6 flex flex-col items-center min-w-[200px] hover:scale-105 transition-transform duration-300"
+          >
+            <img
+              src={v.photo}
+              alt={v.name}
+              className="w-24 h-24 rounded-full object-cover mb-4"
+            />
+            <h3 className="text-xl font-semibold">{v.name}</h3>
+            <p className="text-gray-500">{v.role}</p>
+          </div>
+        ))}
+      </Marquee>
+
+      {/* 🟢 Row gap added here */}
+      <div className="my-6"></div>
+
+      {/* Second Row - Right to Left */}
+      <Marquee speed={40} gradient={false} direction="right" pauseOnHover={true}>
+        {secondRow.map((v) => (
+          <div
+            key={v._id}
+            className="bg-base-100 mx-4 rounded-xl shadow-lg p-6 flex flex-col items-center min-w-[200px] hover:scale-105 transition-transform duration-300"
+          >
+            <img
+              src={v.photo}
+              alt={v.name}
+              className="w-24 h-24 rounded-full object-cover mb-4"
+            />
+            <h3 className="text-xl font-semibold">{v.name}</h3>
+            <p className="text-gray-500">{v.role}</p>
+          </div>
+        ))}
+      </Marquee>
+    </section>
+  );
 };
 
 export default OurVolunteers;

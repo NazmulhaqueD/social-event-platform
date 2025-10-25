@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Volunteer = () => {
 
@@ -21,11 +22,16 @@ const Volunteer = () => {
 
         axios.post('https://social-serve-server.vercel.app/volunteers', volunteerData)
             .then(result => {
-                if (result?.data.insertedId) {
+                if (result.data.insertedId) {
                     setLoading(false)
-                    toast.success("Now You Are a Volunteer in The Social Serve")
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your application has been successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
-                console.log(result.data)
             })
             .catch(error => {
                 toast.error(error)
